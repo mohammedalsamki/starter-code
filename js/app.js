@@ -1,7 +1,5 @@
 'use strict';
 
-
-
 // Cart constructor.
 const Cart = function(items) {
   // this.items is an array of CartItem instances.
@@ -28,8 +26,9 @@ Cart.prototype.removeItem = function(item) {
 const CartItem = function(product, quantity) {
   this.product = product;
   this.quantity = quantity;
+  CartItem.allitem.push(this)
 };
-
+CartItem.allitem =[]
 // Product contructor.
 const Product = function(filePath, name) {
   this.filePath = filePath;
@@ -62,5 +61,5 @@ function generateCatalog() {
 
 // Initialize the app by creating the big list of products with images and names
 generateCatalog();
-console.log(generateCatalog);
+
 console.log(Product.allProducts)
