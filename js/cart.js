@@ -1,15 +1,14 @@
 /* global Cart */
 'use strict';
-let remo = 0;
 // Create an event listener so that when the delete link is clicked, the removeItemFromCart method is invoked.
 const table = document.getElementById('cart');
-table.addEventListener('click', removeItemFromCart);
+table.addEventListener('click', remove_Item);
 let cart;
 let tbody = document.querySelector('tbody')
   let c ;
 function loadCart() {
-  const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
-  cart = new Cart(cartItems);
+  const cart_Item = JSON.parse(localStorage.getItem('cart')) || [];
+  cart = new Cart(cart_Item);
   console.log(cart)
 }
 
@@ -26,7 +25,7 @@ function clearCart() {
     tbody.removeChild(tbody.firstChild);
 }
 }
-let rem = []
+let cartArr = []
 // TODO: Fill in the <tr>'s under the <tbody> for each item in the cart
 function showCart() {
   
@@ -40,7 +39,7 @@ function showCart() {
   td.textContent =`remove `
   td.id ="delete"+j
   tr.appendChild(td)
-  rem.push(td.id)
+  cartArr.push(td.id)
     let td1= document.createElement('td')
     td1.textContent =cart.items[j].product
     
@@ -59,17 +58,17 @@ function showCart() {
 }
 
 
-function removeItemFromCart(event) {
+function remove_Item(event) {
   console.log(c)
 
   console.log(event.target.id)
   
   
-    if(rem.includes(event.target.id)){
-    let i = rem.indexOf(event.target.id)
-    rem.splice(i,1)
+    if(cartArr.includes(event.target.id)){
+    let i = cartArr.indexOf(event.target.id)
+    cartArr.splice(i,1)
     table.deleteRow(i+1)
-    console.log(rem)
+    console.log(cartArr)
   cart.removeItem(i)
   cart.saveToLocalStorage()
   
