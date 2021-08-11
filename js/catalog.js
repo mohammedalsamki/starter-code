@@ -29,7 +29,7 @@ function handleSubmit(event) {
   // TODO: Prevent the page from reloading
   event.preventDefault();
   // Do all the things ...
-  CartItem.Product = event.target.items.value;
+  CartItem.product = event.target.items.value;
 
   CartItem.quantity = event.target.quantity.value;
 
@@ -63,7 +63,7 @@ function updateCartPreview() {
   let cartCont = document.getElementById('cartContents');
   let itemList = document.createElement('li');
   cartCont.appendChild(itemList);
-  itemList.textContent = `you picked ${CartItem.quantity} from the product ${CartItem.product} `
+  itemList.textContent = `you picked ${CartItem.product} from the product  ${CartItem.quantity} `
 
 }
 
