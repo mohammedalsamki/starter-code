@@ -5,7 +5,21 @@
 // Set up an empty cart for use on this page.
 const cart = new Cart([]);
 
+if( localStorage.Cart) {
+  let data = JSON.parse( localStorage.Cart );
+  for( let i = 0; i < cart.length; i++ ) {
+    new Product( cart[i].filePath, cart[i].name);
+  }
+} else {
+  for( let i = 0; i < cart.length; i++ ) {
+    new Rest( cart[i].split( '.' )[0], cart[i] );
+  }
+}
+
+console.log(localStorage.cart);
+
 // On screen load, we call this method to put all of the busmall options
+
 // (the things in the Product.allProducts array) into the drop down list.
 function populateForm() {
 

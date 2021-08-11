@@ -1,9 +1,13 @@
 /* global Cart */
 'use strict';
 
+const thead = document.getElementById('thead');
+
 // Create an event listener so that when the delete link is clicked, the removeItemFromCart method is invoked.
 const table = document.getElementById('cart');
 table.addEventListener('click', removeItemFromCart);
+
+
 let cart;
 
 function loadCart() {
@@ -19,10 +23,17 @@ function renderCart() {
 }
 
 // TODO: Remove all of the rows (tr) in the cart table (tbody)
-function clearCart() {}
-
+function clearCart() {
+  let tableheaderaccount = 1;
+  let rowcount = table.rows.length;
+for (let i = tableheaderaccount; i < rowcount.length){
+  table.deleteRow(tableheaderaccount);
+}
+let tbody = document.getElementsByTagNameNS('tbody');
+tbody.textcontent = " ";
 // TODO: Fill in the <tr>'s under the <tbody> for each item in the cart
 function showCart() {
+
 
   // TODO: Find the table body
 
@@ -43,3 +54,4 @@ function removeItemFromCart(event) {
 
 // This will initialize the page and draw the cart on screen
 renderCart();
+}
